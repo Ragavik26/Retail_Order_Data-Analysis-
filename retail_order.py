@@ -64,7 +64,7 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from the .env file
+# Load environment variables from the .env file txt 
 load_dotenv()
 
 host = "localhost"
