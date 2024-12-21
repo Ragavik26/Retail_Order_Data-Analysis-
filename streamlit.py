@@ -424,7 +424,7 @@ if selected_query_left:
     st.code(selected_sql_left, language="sql")
 
 # Execute the query and plot histogram when the button is clicked
-if st.button("Run Left Query"):
+if st.button("Run Query"):
     if selected_query_left:
         try:
             # Connect to the PostgreSQL database
