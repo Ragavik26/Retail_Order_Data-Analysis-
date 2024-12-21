@@ -7,9 +7,8 @@ This project is an interactive data analysis application built with **Streamlit*
 ## Project Overview
 
 The dataset used in this project contains sales and order data for a retail business. The project involves the following steps:
-
-- **Data Cleaning**: Handling missing values, removing duplicates, and fixing inconsistencies in the data.
 - **Data Extraction**: Extracting relevant information and preparing it for analysis using SQL queries.
+- **Data Cleaning**: Handling missing values, removing duplicates, and fixing inconsistencies in the data.
 - **SQL Queries**: The project uses various queries to extract key business insights such as total revenue, best-selling products, and highest-profit categories.
 - **Streamlit Application**: The interactive web application allows users to execute queries and visualize the results dynamically.
 
