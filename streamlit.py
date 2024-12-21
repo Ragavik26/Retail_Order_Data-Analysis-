@@ -146,10 +146,11 @@ query_sql = [
     ''',
 
     '''
-    select sub_category, sum(quantity) as total_qty 
-    from data2 
-    group by data2.sub_category 
-    order by total_qty desc 
+    select data1.segment, sum(quantity) as total_qty
+    from data1
+    inner join data2 on data1.order_id = data2.order_id
+    group by data1.segment 
+    order by total_qty desc
     limit 3;
     ''',
 
