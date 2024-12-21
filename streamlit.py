@@ -15,7 +15,8 @@ DB_HOST = os.getenv("DB_HOST")
 DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_PORT = os.getenv("DB_PORT")  # Default PostgreSQL port
+DB_PORT = os.getenv("DB_PORT")
+print(DB_PORT)
 
 st.markdown(
     """
@@ -146,10 +147,11 @@ query_sql = [
     ''',
 
     '''
-    select sub_category, sum(quantity) as total_qty 
-    from data2 
-    group by data2.sub_category 
-    order by total_qty desc 
+    select data1.segment, sum(quantity) as total_qty
+    from data1
+    inner join data2 on data1.order_id = data2.order_id
+    group by data1.segment 
+    order by total_qty desc
     limit 3;
     ''',
 
@@ -414,7 +416,7 @@ def visualize_query_based_on_results(df, query_name):
 # Left side queries (1-10)
 st.subheader("Query Set 1-10")
 selected_query_left = st.selectbox("Select a Query (1-10)", queries[:10], key="query_left")
-selected_sql_left = query_sql[queries.index(selected_query_left)]
+selected_sql_left = query_sql[queries.index(selected_query_left)] 
 
 # Display the selected query in SQL format using st.code (with proper formatting)
 if selected_query_left:
@@ -431,7 +433,7 @@ if st.button("Run Left Query"):
                 database=DB_NAME,
                 user=DB_USER,
                 password=DB_PASSWORD,
-                port=DB_PORT,
+                port="5432",
             )
             cursor = connection.cursor()
 
@@ -478,7 +480,7 @@ if st.button("Run Right Query"):
                 database=DB_NAME,
                 user=DB_USER,
                 password=DB_PASSWORD,
-                port=DB_PORT,
+                port="5432",
             )
             cursor = connection.cursor()
 
