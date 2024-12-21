@@ -61,11 +61,18 @@ odf2 = pd.read_csv("order_data_2.csv")
 # load tables into sql
 from sqlalchemy import create_engine
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from the .env file
+load_dotenv()
 
 host = "localhost"
 user = "postgres"
-password = "2617"
 database = "project_1"
+# Database connection settings from environment variables
+password = os.getenv("DB_PASSWORD")
+
 
 engine = create_engine(f"postgresql://{user}:{password}@{host}/{database}")
 

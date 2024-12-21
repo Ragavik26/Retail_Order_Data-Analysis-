@@ -4,13 +4,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Database connection settings
-DB_HOST = "localhost"
-DB_NAME = "project_1"
-DB_USER = "postgres"
-DB_PASSWORD = "2617"
-DB_PORT = "5432"  # Default PostgreSQL port  
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from the .env file
+load_dotenv()
+
+# Database connection settings from environment variables
+DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_PORT = os.getenv("DB_PORT")  # Default PostgreSQL port
 
 st.markdown(
     """
